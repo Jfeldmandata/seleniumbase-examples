@@ -11,7 +11,8 @@ try:
     description_lines = total_description.split('\n')
     long_description_lines = []
     for line in description_lines:
-        if not line.startswith("<meta ") and not line.startswith("<link "):
+        if line not in ["<meta ", "<link"]:
+#         if not line.startswith("<meta ") and not line.startswith("<link "):
             long_description_lines.append(line)
     long_description = "\n".join(long_description_lines)
 except IOError:
@@ -25,9 +26,6 @@ setup(
     long_description_content_type='text/markdown',
     url='https://github.com/seleniumbase/SeleniumBase',
     platforms=["Windows", "Linux", "Mac OS-X"],
-    author='Michael Mintz',
-    maintainer='Michael Mintz',
-    license="MIT",
     classifiers=[
         "Environment :: Web Environment",
         "Framework :: Pytest",
@@ -64,5 +62,3 @@ setup(
             ]
         }
     )
-
-print("\n*** SeleniumBase Installation Complete! ***\n")
